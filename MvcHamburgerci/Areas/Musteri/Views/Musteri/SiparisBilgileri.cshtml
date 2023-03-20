@@ -1,0 +1,75 @@
+﻿
+@using MvcHamburgerci.Entities
+
+@{
+    ViewData["ToplamTutarFormat"] = "{0:₺0.00}";
+}
+
+@model Siparis
+
+<h3 class="mb-4" style="color:darkred">Sipariş Bilgileri</h3>
+
+<div class="row mb-5">
+    <div class="col-md-6">
+        <input asp-for="Id" type="hidden" value="" />
+        <div>
+            <strong>Menü:</strong> @Model.SeciliMenusu.Ad
+        </div>
+        <div>
+            <img src="~/img/@Model.SeciliMenusu.DosyaAd" alt="" />
+        </div>
+    </div>
+    <div class="col-md-6 mt-4">
+        <div>
+            <strong>Ekstra Malzemeler:</strong>
+            <ul>
+                @foreach (var malzeme in Model.EkstraMalzemeleri)
+                {
+                    <li>@malzeme.Ad</li>
+                }
+            </ul>
+        </div>
+        <div class="mt-2">
+            <strong>Boyut:</strong> @Model.Boyutu
+        </div>
+        <div class="mt-2">
+            <strong>Adet:</strong> @Model.Adedi
+        </div>
+        <div class="mt-2">
+            <strong>Toplam Tutar:</strong> @(string.Format(ViewData["ToplamTutarFormat"].ToString(), Model.ToplamTutar))
+        </div>
+        <button type="button" class="btn btn-success mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Siparişi Öde
+        </button>
+        <div class="mt-2">
+            <a class="btn btn-warning fw-bold text-white" asp-action="SiparisDuzenle" asp-controller="Musteri" asp-route-id="@Model.Id">Siparişi Düzenle</a>
+            <a class="btn btn-danger fw-bold" asp-action="SiparisSil" asp-controller="Musteri" asp-route-id="@Model.Id">Siparişi Sil</a>
+        </div>
+       
+       
+        
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<form asp-action="SiparisBilgileri" method="post">
+    <input type="hidden" asp-for="Id" value="" />
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ödeme Bilgisi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @(string.Format(ViewData["ToplamTutarFormat"].ToString(), Model.ToplamTutar)) fiyatlı siparişiniz ödenmiştir.
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" data-bs-dismiss="modal" class="btn btn-success">Tamam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

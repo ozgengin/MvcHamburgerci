@@ -1,0 +1,37 @@
+﻿<div class="container p-4">
+
+    <h1>Yönetici Paneline Hoşgeldiniz</h1>
+
+    <div class="row mt-5">
+
+        <div class="col-md-6">
+            <div class="card bg-warning fw-bold text-white mb-4">
+                <div class="card-body">Menüleri Gör</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="Index" asp-controller="Menu">Düzenleme Yapın</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-success fw-bold text-white mb-4">
+                <div class="card-body">Ekstra Malzemeleri Gör</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="Index" asp-controller="Malzeme">Düzenleme Yapın</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-info text-white fw-bold mb-4">
+                <div class="card-body">Siparişleri Gör</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" asp-action="KullaniciSiparisleri" asp-controller="Yonetici">Kullanıcıları ve siparişlerini incele</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

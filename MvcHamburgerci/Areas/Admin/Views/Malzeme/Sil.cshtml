@@ -1,0 +1,19 @@
+﻿@using MvcHamburgerci.Entities
+@model EkstraMalzeme
+@{
+    ViewBag.Title = "Sil";
+}
+
+<div class="container p-4">
+    <h4>Ekstra Malzeme Silme</h4>
+    <form asp-action="SilOnay" asp-controller="Malzeme" method="post">
+        <input asp-for="Id" type="hidden" />
+        <p>@Model.Ad (@Model.Fiyat)  adlı malzemeyi silmek istediğinizden emin misiniz??</p>
+        <div>
+            <button class="btn btn-success">Evet</button>
+            <a asp-action="Index" class="btn btn-danger">Vazgeç</a>
+        </div>
+    </form>
+</div>
+
+

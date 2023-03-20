@@ -1,0 +1,41 @@
+﻿@using MvcHamburgerci.Entities
+@model List<Siparis>
+
+
+<h3 class="mt-4" style="color:darkred">Önceki Siparişler</h3>
+<div class="text-end mb-4">
+    <a asp-action="SiparisOlustur" asp-controller="Musteri" class="btn btn-success fw-bold">Yeni Sipariş Oluştur</a>
+</div>
+
+
+@if(ViewBag.Siparis != null){
+    <h5 class="text-danger">@ViewBag.Siparis</h5>
+}
+else{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Menü</th>
+                <th></th>
+                <th>Boyut</th>
+                <th>Adet</th>
+                <th>Toplam Tutar</th>
+                <th>Sipariş Tarihi</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle">@item.SeciliMenusu.Ad</td>
+                <td>
+                    <img src="~/img/@item.SeciliMenusu.DosyaAd" style="height:100px" alt="" />
+                </td>
+                <td class="align-middle">@item.Boyutu</td>
+                <td class="align-middle">@item.Adedi</td>
+                <td class="align-middle">@item.ToplamTutar₺</td>
+                <td class="align-middle">@item.SiparisTarihi</td>
+            </tr>
+        }
+    </table>
+}
+

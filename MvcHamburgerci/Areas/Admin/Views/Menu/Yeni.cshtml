@@ -1,0 +1,22 @@
+﻿@model MenuViewModel
+
+<div class="container p-4">
+    <h4>Yeni Menü Ekle</h4>
+    <form asp-action="Yeni" method="post" enctype="multipart/form-data">
+        <div class="mb-2">
+            <label asp-for="Ad">Ad:</label>
+            <input type="text" asp-for="Ad" class="form-control" />
+            <span asp-validation-for="Ad" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Fiyat">Fiyat:</label>
+            <input type="text" asp-for="Fiyat" class="form-control" />
+            <span asp-validation-for="Fiyat" class="text-danger"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Resim">Resim:</label>
+            <input type="file" asp-for="Resim" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Ekle</button>
+    </form>
+</div>

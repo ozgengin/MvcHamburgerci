@@ -1,0 +1,66 @@
+﻿
+@using MvcHamburgerci.Entities
+@model Siparis
+
+<h3 class="mb-3" style="color:darkred">Siparişi Düzenle</h3>
+
+<form method="post" asp-action="SiparisDuzenle" class="mb-5">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group mb-3">
+        <input asp-for="Id" type="hidden" value="@Model.Id" />
+        <label asp-for="SeciliMenusu.Id" class="control-label col-md-2 h5">Menü:</label>
+        <div class="col-md-10">
+            <select asp-for="SeciliMenusu.Id" asp-items="@(new SelectList(ViewBag.MenuListesi, "Value", "Text", Model.SeciliMenusu.Id))" class="form-control">
+                <option value="">Seçiniz</option>
+            </select>
+            <span asp-validation-for="SeciliMenusu.Id" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="control-label col-md-2 h5">Ekstra Malzemeler:</label>
+        <div class="col-md-10 d-flex">
+            @foreach (var malzeme in ViewBag.MalzemeListesi)
+            {
+                 var checkedAttribute = "";
+                if (Model.EkstraMalzemeleri != null && Model.EkstraMalzemeleri.Any(m => m.Id == malzeme.Id))
+                 {
+                   checkedAttribute = "checked";
+                 }
+                <div class="checkbox me-2">
+                    <label>
+                        <input type="checkbox" value="@malzeme.Id" name="ekstraMalzemeler" @checkedAttribute /> @malzeme.Ad
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+
+    
+
+    <div class="form-group mb-3">
+        <label asp-for="Boyutu" class="control-label col-md-2 h5">Boyut:</label>
+        <div class="col-md-10">
+            <select asp-for="Boyutu" asp-items="@(new SelectList(Enum.GetValues(typeof(BoyutEnum)).Cast<BoyutEnum>().Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }), "Value", "Text", Model.Boyutu))" class="form-control">
+                <option value="">Seçiniz</option>
+            </select>
+            <span asp-validation-for="Boyutu" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Adedi" class="control-label col-md-2 h5">Adet:</label>
+        <div class="col-md-10">
+            <input asp-for="Adedi" class="form-control" />
+            <span asp-validation-for="Adedi" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-success">Düzenlemeyi Kaydet</button>
+        </div>
+    </div>
+</form>
+

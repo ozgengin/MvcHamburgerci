@@ -1,0 +1,33 @@
+﻿@using MvcHamburgerci.Entities
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Menu>
+
+
+<div class="container-fluid">
+    <img src="~/img/giris.jpg" class="w-100 rounded-3" alt="" />
+
+    <h1 class="mt-3 mb-4 text-center" style="color:darkred">Menülerimiz</h1>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 mb-2">
+                <div class="card text-center d-flex align-items-center" style="color:darkred">
+                    <h4 class="mt-2">@item.Ad</h4>
+                    <img src="~/img/@item.DosyaAd" class="img-fluid mx-auto" style="max-width:50%" alt="" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <a asp-area="Musteri" asp-action="Index" asp-controller="Musteri" class="btn btn-warning d-block mt-4 fw-bold rounded-3" style="color:darkred">Sipariş Verin</a>
+
+</div>
+
+
+
+

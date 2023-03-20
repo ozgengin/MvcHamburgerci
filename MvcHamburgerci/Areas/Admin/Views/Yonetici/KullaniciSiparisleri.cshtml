@@ -1,0 +1,23 @@
+﻿@using MvcHamburgerci.Entities
+@model List<Siparis>
+
+<table class="table">
+    <thead class="bg-warning">
+        <tr class="fw-bold">
+            <td>Kullanıcı</td>
+            <td>Siparişi</td>
+            <td>Ödediği Tutar</td>
+            <td>Tarih</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model){
+            <tr>
+                <td>@item.Kullanici.Email</td>
+                <td>@item.SeciliMenusu.Ad</td>
+                <td>@item.ToplamTutar₺</td>
+                <td>@item.SiparisTarihi</td>
+            </tr>
+        }
+    </tbody>
+</table>

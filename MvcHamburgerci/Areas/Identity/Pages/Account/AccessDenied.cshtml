@@ -1,0 +1,12 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Access denied";
+}
+
+<header>
+    <h3 class="text-danger">Giriş Yapmanız Gerekmektedir.</h3>
+    <a class="nav-link text-white btn btn-danger" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a>
+</header>
+
+
